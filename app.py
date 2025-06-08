@@ -1,8 +1,6 @@
 import warnings
 warnings.filterwarnings("ignore")
-
 import streamlit as st
-
 # HTML + CSS do botão
 botao_html = """
 <style>
