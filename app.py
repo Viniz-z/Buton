@@ -1,24 +1,8 @@
-<button class="button">
-  <span>Join Today</span>
+import streamlit as st
 
-  <svg
-    class="icon"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    stroke-width="2"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      d="M17 8l4 4m0 0l-4 4m4-4H3"
-    ></path>
-  </svg>
-</button>
-
+# CSS + HTML do botão
+botao_html = """
 <style>
-/* From Uiverse.io by HecktorViegas  - Tags: button */
 .button {
   cursor: pointer;
   display: flex;
@@ -29,15 +13,14 @@
   border-radius: 1.2rem;
   background: linear-gradient(to bottom, #e3a8fc, #8d38cf);
   box-sizing: border-box;
-  box-shadow:
-    -3px 5px 1.5px #5a2982,
-    -15px 12px 20px #5a2982ba;
+  box-shadow: -3px 5px 1.5px #5a2982, -15px 12px 20px #5a2982ba;
   border: none;
   transform: rotate3d(2, -1, 1, 343deg) rotatex(27deg) scale(0.9);
   color: #ffcaf7;
   font-weight: bold;
   font-size: 1.2rem;
   transition: all 0.2s;
+  position: relative;
 }
 
 .button:before {
@@ -54,15 +37,13 @@
 }
 
 .button:hover {
-  transition: all 0.2s;
   transform: scale(1.2);
   box-shadow: inset -0.5px -3px 3px 1px #7926bc;
 }
 
 .button:active {
-  transition: all 0.1s;
-  box-shadow: inset 2px 2px 3px #5a2982ba;
   transform: scale(1.15);
+  box-shadow: inset 2px 2px 3px #5a2982ba;
 }
 
 .icon {
@@ -76,5 +57,30 @@
   -webkit-text-fill-color: transparent;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
 </style>
-    
+
+<div class="center">
+  <form action="?join=true" method="post">
+    <button class="button" type="submit">
+      <span>Join Today</span>
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </button>
+  </form>
+</div>
+"""
+
+# Exibe o botão
+st.markdown(botao_html, unsafe_allow_html=True)
+
+# Verifica se foi clicado
+query_params = st.experimental_get_query_params()
+if "join" in query_params:
+    st.success("Você clicou em 'Join Today' 🎉")
