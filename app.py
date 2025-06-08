@@ -1,6 +1,6 @@
 import streamlit as st
 
-# CSS + HTML do botão
+# HTML e CSS do botão estilizado
 botao_html = """
 <style>
 .button {
@@ -77,10 +77,10 @@ botao_html = """
 </div>
 """
 
-# Exibe o botão
+# Renderiza o botão na tela
 st.markdown(botao_html, unsafe_allow_html=True)
 
-# Verifica se foi clicado
-query_params = st.query_params
-if "join" in query_params:
-    st.success("Você clicou em 'Join Today' 🎉")
+# Usa st.query_params (substituto oficial de experimental_get_query_params)
+params = st.query_params
+if "join" in params:
+    st.success("✅ Você clicou em 'Join Today' 🎉")
