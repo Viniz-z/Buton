@@ -81,6 +81,6 @@ botao_html = """
 st.markdown(botao_html, unsafe_allow_html=True)
 
 # Verifica se foi clicado
-query_params = st.experimental_get_query_params()
+query_params = st.query_params
 if "join" in query_params:
     st.success("Você clicou em 'Join Today' 🎉")
