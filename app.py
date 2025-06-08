@@ -1,6 +1,6 @@
 import streamlit as st
 
-# HTML e CSS do botão estilizado
+# HTML + CSS do botão
 botao_html = """
 <style>
 .button {
@@ -22,7 +22,6 @@ botao_html = """
   transition: all 0.2s;
   position: relative;
 }
-
 .button:before {
   content: "";
   width: 97%;
@@ -35,28 +34,23 @@ botao_html = """
   box-shadow: inset 0 -5px 5px -1px #7926bc;
   background: linear-gradient(to bottom, #d591ff, #7f2dc2);
 }
-
 .button:hover {
   transform: scale(1.2);
   box-shadow: inset -0.5px -3px 3px 1px #7926bc;
 }
-
 .button:active {
   transform: scale(1.15);
   box-shadow: inset 2px 2px 3px #5a2982ba;
 }
-
 .icon {
   width: 1.8rem;
   height: 1.8rem;
 }
-
 .button span {
   background: -webkit-linear-gradient(#ffe4fe, #ffcaf7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 .center {
   display: flex;
   justify-content: center;
@@ -77,10 +71,8 @@ botao_html = """
 </div>
 """
 
-# Renderiza o botão na tela
 st.markdown(botao_html, unsafe_allow_html=True)
 
-# Usa st.query_params (substituto oficial de experimental_get_query_params)
-params = st.query_params
-if "join" in params:
-    st.success("✅ Você clicou em 'Join Today' 🎉")
+query_params = st.query_params
+if "join" in query_params:
+    st.success("Você clicou em 'Join Today' 🎉")
